@@ -1,6 +1,6 @@
 ---
 - name: dnsmasq package
-  apt:
+  package:
       state: present
       name:
           - dnsmasq
