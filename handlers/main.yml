@@ -1,2 +1,7 @@
 ---
-# handlers file for dnsmasq
+- name: Restart dnsmasq service
+  systemd:
+      name: dnsmasq
+      enabled: true
+      state: restarted
+  when: tftp.changed or dhcp.changed
