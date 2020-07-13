@@ -7,7 +7,7 @@ interface={{ interface["name"] }}
 {% endfor %}
 
 {% for range in dhcp.ranges %}
-dhcp-range=set:{{ range.tag }},{{ range.start }},{{ range.end }},static
+dhcp-range=set:{{ range.tag }},{{ range.network }},static
 {% endfor %}
 
 {% for host in dhcp.hosts %}
