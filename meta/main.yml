@@ -17,5 +17,5 @@ galaxy_info:
         - stretch
         - buster
 
-  galaxy_tags: ["dnsmasq", "dns", "dhcp", tftp"]
+  galaxy_tags: ["dnsmasq", "dns", "dhcp", "tftp"]
 dependencies: []
