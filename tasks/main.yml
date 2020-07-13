@@ -1,0 +1,16 @@
+---
+- name: dnsmasq package
+  apt:
+      state: present
+      name:
+          - dnsmasq
+- name: dnsmasq configuration file for TFTP
+  template:
+      src: dnsmasq.tftp.j2
+      dest: "/etc/dnsmasq.d/tftp.conf"
+  when: tftp is defined
+- name: dnsmasq configuration file for DHCP
+  template:
+      src: dnsmasq.dhcp.j2
+      dest: "/etc/dnsmasq.d/dhcp.conf"
+  when: dhcp is defined
