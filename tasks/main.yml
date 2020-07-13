@@ -16,3 +16,4 @@
       dest: "/etc/dnsmasq.d/dhcp.conf"
   when: dhcp is defined
   register: dhcp
+- include: handlers/main.yml
