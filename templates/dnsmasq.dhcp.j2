@@ -4,12 +4,12 @@
 bind-interfaces
 {% for interface in dhcp.interfaces %}
 interface={{ interface["name"] }}
-{% endif %}
+{% endfor %}
 
 {% for range in ranges %}
 dhcp-range=set:{{ range.tag }},{{ range.start }},{{ range.end }},static
-{% endif %}
+{% endfor %}
 
 {% for host in hosts %}
 dhcp-host={{ host.hwaddr }},set:{{ host.name }},{{ host.addr }},{{ host.name }}
-{% endif %}
+{% endfor %}
