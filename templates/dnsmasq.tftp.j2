@@ -1,7 +1,7 @@
 {% if tftp is defined %}
 enable-tftp
 tftp-root={{ tftp.root_directory }}
-{% if unique_root in tftp and tftp.unique_root == True %}tftp-unique-root{% endif %}
-{% if owned_by in tftp and tftp.owned_by == True %}tftp-secure{% endif %}
-{% if lowercase in tftp and tftp.lowercase == True %}tftp-lowercase{% endif %}
+{% if "unique_root" in tftp and tftp.unique_root == True %}tftp-unique-root{% endif %}
+{% if "owned_by" in tftp and tftp.owned_by == True %}tftp-secure{% endif %}
+{% if "lowercase" in tftp and tftp.lowercase == True %}tftp-lowercase{% endif %}
 {% endif %}
