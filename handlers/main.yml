@@ -4,4 +4,4 @@
       name: dnsmasq
       enabled: true
       state: restarted
-  when: tftp.changed or dhcp.changed
+  when: tftp_config.changed or dhcp_config.changed

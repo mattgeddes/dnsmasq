@@ -10,7 +10,7 @@
       dest: "/etc/dnsmasq.d/tftp.conf"
       trim_blocks: true
   when: tftp is defined
-  register: tftp
+  register: tftp_config
 - name: TFTP server root
   file:
       state: directory
@@ -21,7 +21,7 @@
       dest: "/etc/dnsmasq.d/dhcp.conf"
       trim_blocks: true
   when: dhcp is defined
-  register: dhcp
+  register: dhcp_config
 - name: Copy bootloader files to TFTP root
   copy:
       src: "{{ item.bootfile }}"
