@@ -26,7 +26,7 @@
   copy:
       src: "{{ item.bootfile }}"
       dest: "{{ tftp.root_directory }}/{{ item.bootfile }}"
-  when: bootfile in item and root_directory in tftp
+  when: item.bootfile is defined and tftp.root_directory is defined
   with_items:
       - "{{ dhcp.hosts | default([]) }}"
 - include: handlers/main.yml
