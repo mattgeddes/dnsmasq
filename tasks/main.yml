@@ -8,12 +8,14 @@
   template:
       src: dnsmasq.tftp.j2
       dest: "/etc/dnsmasq.d/tftp.conf"
+      trim_blocks: true
   when: tftp is defined
   register: tftp
 - name: dnsmasq configuration file for DHCP
   template:
       src: dnsmasq.dhcp.j2
       dest: "/etc/dnsmasq.d/dhcp.conf"
+      trim_blocks: true
   when: dhcp is defined
   register: dhcp
 - include: handlers/main.yml

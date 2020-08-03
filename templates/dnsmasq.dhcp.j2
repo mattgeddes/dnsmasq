@@ -12,4 +12,7 @@ dhcp-range=set:{{ range.tag }},{{ range.network }},static
 
 {% for host in dhcp.hosts %}
 dhcp-host={{ host.hwaddr }},set:{{ host.name }},{{ host.addr }},{{ host.name }}
+{% if bootfile in host %}
+dhcp-boot=tag:{{ host.name }},{{ host.bootfile }}
+{% endif %}
 {% endfor %}
