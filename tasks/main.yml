@@ -11,6 +11,10 @@
       trim_blocks: true
   when: tftp is defined
   register: tftp
+- name: TFTP server root
+  file:
+      state: directory
+      path: "{{ tftp.root_directory }}"
 - name: dnsmasq configuration file for DHCP
   template:
       src: dnsmasq.dhcp.j2
@@ -18,4 +22,11 @@
       trim_blocks: true
   when: dhcp is defined
   register: dhcp
+- name: Copy bootloader files to TFTP root
+  copy:
+      src: "{{ item.bootfile }}"
+      dest: "{{ tftp.root_directory }}/{{ item.bootfile }}"
+  when: bootfile in item and root_directory in tftp
+  with_items:
+      - "{{ dhcp.hosts | default([]) }}"
 - include: handlers/main.yml

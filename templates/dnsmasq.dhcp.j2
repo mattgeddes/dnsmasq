@@ -1,18 +1,24 @@
 ## Automatically generated DHCP configuration fragment for dnsmasq
 
+{% if interfaces in dhcp %}
 # Bind to specific interfaces only.
 bind-interfaces
 {% for interface in dhcp.interfaces %}
 interface={{ interface["name"] }}
 {% endfor %}
+{% endif %}
 
+{% if ranges in dhcp %}
 {% for range in dhcp.ranges %}
 dhcp-range=set:{{ range.tag }},{{ range.network }},static
 {% endfor %}
+{% endif %}
 
+{% if hosts in dhcp %}
 {% for host in dhcp.hosts %}
 dhcp-host={{ host.hwaddr }},set:{{ host.name }},{{ host.addr }},{{ host.name }}
 {% if bootfile in host %}
 dhcp-boot=tag:{{ host.name }},{{ host.bootfile }}
 {% endif %}
 {% endfor %}
+{% endif %}
